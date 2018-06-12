@@ -1,0 +1,10 @@
+python preprocess.py
+python train.py --model='Tacotron'
+*Demo_server
+python demo_server.py
+*Evaluation
+python synthesize.py --model='Tacotron' --mode='eval'
+*Natural synthesis
+python synthesize.py --model='Tacotron' --GTA=False
+*Ground Truth Aligned synthesis
+python synthesize.py --model='Tacotron'
