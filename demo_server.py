@@ -243,15 +243,13 @@ if __name__ == '__main__':
   from wsgiref import simple_server
   parser = argparse.ArgumentParser()
   parser.add_argument('--checkpoint', \
-                      default='logs-Tacotron/pretrained/', \
+                      default='logs-Tacotron/pretrained/model.ckpt-258000', \
                       help='Full path to model checkpoint')
   parser.add_argument('--hparams', default='')
   args = parser.parse_args()
   os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
   hparams.parse(args.hparams)
 
-  # Automatically loading the lastest model
-  checkpoint_path = tf.train.get_checkpoint_state(args.checkpoint).model_checkpoint_path
-  synthesizer.load(checkpoint_path)
+  synthesizer.load(args.checkpoint)
   print('Serving on port 9000')
   simple_server.make_server('0.0.0.0', 9000, api).serve_forever()
