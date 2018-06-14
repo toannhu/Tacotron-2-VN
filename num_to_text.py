@@ -55,7 +55,7 @@ def process_number(text):
         if word.isdigit():
             word_out = int_to_vn(int(word))
         date = re.findall(r"[\w']+", word)
-        if len(date)==3 and date[0].isdigit() and date[1].isdigit() and date[2].isdigit():
+        if len(date)== 3 and date[0].isdigit() and date[1].isdigit() and date[2].isdigit():
             word_out = int_to_vn(int(date[0]))+' tháng '+int_to_vn(int(date[1]))+' năm ' +int_to_vn(int(date[2]))
 
         if len(date) == 2 and date[0].isdigit() and date[1].isdigit() and int(date[1])>12:
@@ -68,12 +68,12 @@ def process_number(text):
             word_out = date[0]+ ' trên '+ date[1]
 
         num = word.split('.')
-        if len(num) ==2 and num[0].isdigit() and num[1].isdigit():
-            word_out = int_to_vn(int(num[0]+num[1]))
+        if len(num) == 2 and num[0].isdigit() and num[1].isdigit():
+            word_out = int_to_vn(int(num[0])) + ' chấm ' + int_to_vn(int(num[1]))
 
         mnum = word.split(',')
-        if len(mnum) ==2 and mnum[0].isdigit() and mnum[1].isdigit():
-            word_out = int_to_vn(int(mnum[0]+mnum[1]))
+        if len(mnum) == 2 and mnum[0].isdigit() and mnum[1].isdigit():
+            word_out = int_to_vn(int(mnum[0])) + ' phẩy ' + int_to_vn(int(mnum[1]))
 
         if word_out == '%': word_out = 'phần trăm'
         if word_out == tokens[0] or word_out == ',' or word_out == ';' or word_out == '.' or tokens[tokens.index(word) -1] == '(' or\
@@ -83,5 +83,5 @@ def process_number(text):
     return out
 
 # if __name__=="__main__":
-#     print(processNumber('Ngày 2/10/1996 đã có 1000 người tham gia chiến dịch'))
+#     print(process_number('2000,543'))
 #     print(int_to_vn(1000005))
