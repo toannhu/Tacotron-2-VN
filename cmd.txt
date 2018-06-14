@@ -8,3 +8,5 @@ python synthesize.py --model='Tacotron' --mode='eval'
 python synthesize.py --model='Tacotron' --GTA=False
 *Ground Truth Aligned synthesis
 python synthesize.py --model='Tacotron'
+
+pm2 start demo_server.py --interpreter=/usr/bin/python3.5
